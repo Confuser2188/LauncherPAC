@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class Main {
 
-    public static final transient String VERSION = "1.0.0-dev1";
+    public static final transient String VERSION = "1.0.0-dev";
 
     public static void main(String[] args){
         if(!System.getProperty("os.name").toLowerCase().contains("windows")){

@@ -50,6 +50,7 @@ public class Login extends JFrame implements ActionListener {
         }
     }
 
+    // TODO: Better validity check
     private static boolean isStringOnlyAlphabetAndNum(String str)
     {
         return ((!str.equals(""))
@@ -63,6 +64,9 @@ public class Login extends JFrame implements ActionListener {
                 .replace("7", "")
                 .replace("8", "")
                 .replace("9", "")
-                .replace("0", "").matches("^[a-zA-Z]*$")));
+                .replace("0", "")
+                .replace("_", "")
+
+                .matches("^[a-zA-Z]*$")));
     }
 }
