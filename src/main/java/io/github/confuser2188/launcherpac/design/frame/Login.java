@@ -1,5 +1,6 @@
 package io.github.confuser2188.launcherpac.design.frame;
 
+import io.github.confuser2188.launcherpac.fileBaseSettings.settingsAPI;
 import io.github.confuser2188.launcherpac.language.langAPI;
 
 import javax.swing.*;
@@ -33,8 +34,9 @@ public class Login extends JFrame implements ActionListener {
         container.add(userLabel);
         container.add(userTextField);
         container.add(loginButton);
-
         loginButton.addActionListener(this);
+        userTextField.setText(settingsAPI.getVal("username")==null ? "" : settingsAPI.getVal("username"));
+
     }
 
     @Override
@@ -46,6 +48,7 @@ public class Login extends JFrame implements ActionListener {
             }else if(username.length() > 16){
                 JOptionPane.showMessageDialog(this,"Invalid username", "PAC Launcher", JOptionPane.ERROR_MESSAGE);
             }else{
+                settingsAPI.setVal("username",username);
                 new MainMenu(username);
                 dispose();
             }
