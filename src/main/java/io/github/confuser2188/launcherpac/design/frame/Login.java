@@ -1,5 +1,7 @@
 package io.github.confuser2188.launcherpac.design.frame;
 
+import io.github.confuser2188.launcherpac.language.langAPI;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,7 +10,7 @@ import java.awt.event.ActionListener;
 public class Login extends JFrame implements ActionListener {
 
     private JTextField userTextField = new JTextField();
-    private JButton loginButton = new JButton("Login");
+    private JButton loginButton = new JButton(langAPI.usingLang.loginButton);
 
 
     public Login() {
@@ -22,7 +24,7 @@ public class Login extends JFrame implements ActionListener {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation((int)screenSize.getWidth() / 2 - (int)this.getBounds().getWidth() / 2, (int)screenSize.getHeight() / 2 - (int)this.getBounds().getHeight() / 2);
 
-        JLabel userLabel = new JLabel("Username: ");
+        JLabel userLabel = new JLabel(langAPI.usingLang.username);
         userLabel.setBounds(20, 15, 100, 30);
         userTextField.setBounds(110, 20, 150, 25);
         loginButton.setBounds(20, 70, 240, 30);

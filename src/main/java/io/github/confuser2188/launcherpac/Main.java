@@ -1,8 +1,15 @@
 package io.github.confuser2188.launcherpac;
 
+
+
 import io.github.confuser2188.launcherpac.design.frame.Login;
+import io.github.confuser2188.launcherpac.fileBaseSettings.settingsAPI;
+import io.github.confuser2188.launcherpac.language.langAPI;
+
+
 
 import javax.swing.*;
+
 
 public class Main {
 
@@ -13,7 +20,8 @@ public class Main {
             JOptionPane.showMessageDialog(null, "PAC only runs on Windows OS", "PAC", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
+        settingsAPI.setupSettingsAPI();
+        langAPI.setupLangAPI();
         new Login();
     }
 }
