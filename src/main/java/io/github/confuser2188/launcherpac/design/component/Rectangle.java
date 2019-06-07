@@ -15,6 +15,8 @@ public class Rectangle extends Component {
 
     @Override
     public void draw(Graphics graphics) {
+        if(!this.canDraw()) return;
+
         graphics.setColor(this.getColor());
         graphics.drawRect(this.getX(), this.getY(), this.getWidth(), this.getHeight());
     }

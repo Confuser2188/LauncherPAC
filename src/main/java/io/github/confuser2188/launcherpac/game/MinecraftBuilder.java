@@ -39,8 +39,7 @@ public class MinecraftBuilder {
                         "-username",
                         username,
                         "-customparameter",
-                        "-Xmx1G",
-                        //"d1005"
+                        "-Xmx" + (int)(Double.parseDouble(MainMenu.ramValueString.getString().split("/")[0]) * 1024) + "M",
                 };
 
                 Class<?> classToLoad = Class.forName("io.github.confuser2188.loaderpac.Main", true, child);

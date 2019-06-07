@@ -1,5 +1,7 @@
 package io.github.confuser2188.launcherpac.design.component;
 
+import io.github.confuser2188.launcherpac.design.frame.MainMenu;
+
 import java.awt.*;
 
 public class FilledRectangle extends Component {
@@ -15,6 +17,8 @@ public class FilledRectangle extends Component {
 
     @Override
     public void draw(Graphics graphics) {
+        if(!this.canDraw()) return;
+
         graphics.setColor(this.getColor());
         graphics.fillRect(this.getX(), this.getY(), this.getWidth(), this.getHeight());
     }

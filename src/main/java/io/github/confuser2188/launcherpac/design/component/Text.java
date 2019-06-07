@@ -41,12 +41,14 @@ public class Text extends Component {
 
     @Override
     public void draw(Graphics graphics) {
+        if(!this.canDraw()) return;
+
         if(this.font != null)
             graphics.setFont(this.font);
         graphics.setColor(this.getColor());
 
         if(this.mirror){
-            if(string != null) graphics.drawString(this.string.getString(), this.getX() - graphics.getFontMetrics().stringWidth(this.getText()), this.getY());
+            if(string != null) graphics.drawString(this.string.getString(), this.getX() - graphics.getFontMetrics().stringWidth(this.string.getString()), this.getY());
             else graphics.drawString(this.getText(), this.getX() - graphics.getFontMetrics().stringWidth(this.getText()), this.getY());
         }else{
             if(string != null) graphics.drawString(this.string.getString(), this.getX(), this.getY());

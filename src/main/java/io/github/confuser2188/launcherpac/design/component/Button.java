@@ -6,7 +6,7 @@ import io.github.confuser2188.launcherpac.misc.Calc;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
-public abstract class Button extends Component implements IButton {
+public abstract class Button extends Component implements IMouseEvents {
 
     private boolean enabled = true, isInBounds;
     private Color drawColor;
@@ -23,10 +23,12 @@ public abstract class Button extends Component implements IButton {
 
     @Override
     public void draw(Graphics graphics) {
+        if(!this.canDraw()) return;
+
         if(isInBounds) addAlpha(5);
         else subAlpha(5);
 
-        drawColor = new Color(drawColor.getRed(), drawColor.getRed(), drawColor.getRed(), alpha);
+        drawColor = new Color(drawColor.getRed(), drawColor.getGreen(), drawColor.getBlue(), alpha);
         graphics.setColor(drawColor);
         graphics.fillRect(this.getX(), this.getY(), this.getWidth(), this.getHeight());
     }
@@ -78,5 +80,9 @@ public abstract class Button extends Component implements IButton {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public void setAlpha(int alpha) {
+        this.alpha = alpha;
     }
 }

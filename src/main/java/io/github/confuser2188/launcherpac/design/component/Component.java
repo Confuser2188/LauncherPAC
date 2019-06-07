@@ -1,5 +1,7 @@
 package io.github.confuser2188.launcherpac.design.component;
 
+import io.github.confuser2188.launcherpac.design.frame.MainMenu;
+
 import java.awt.*;
 
 public abstract class Component implements IComponent {
@@ -8,6 +10,7 @@ public abstract class Component implements IComponent {
     private int x;
     private int y;
     private Color color;
+    private int tabIndex;
 
     public Component(int x, int y, Color color) {
         this.x = x;
@@ -18,6 +21,18 @@ public abstract class Component implements IComponent {
     public Component(int x, int y) {
         this.x = x;
         this.y = y;
+    }
+
+    public boolean canDraw(){
+        return this.getTabIndex() == 0 || MainMenu.tabIndex == this.getTabIndex();
+    }
+
+    public void setTabIndex(int tabIndex) {
+        this.tabIndex = tabIndex;
+    }
+
+    public int getTabIndex() {
+        return tabIndex;
     }
 
     public void setName(String name) {
