@@ -207,7 +207,7 @@ public class MainMenu extends JFrame {
 
             Text ramValueText = new Text(ramValueString, 700, 210, new Font("Arial", Font.PLAIN, 12), Color.WHITE); ramValueText.setTabIndex(2); ramValueText.setMirror(true);
             this.components.add(ramValueText);
-            this.components.add(new Slider(350, 220, 350, 10, (int)(Double.parseDouble(SystemInfo.getMaxRAM()) * 10), Color.WHITE) {
+            this.components.add(new Slider(350, 220, 350, 10, (int)(Double.parseDouble(SystemInfo.getMaxRAM().replace(",", ".")) * 10), Color.WHITE) {
                 @Override
                 public void valueChanged(double newValue) {
                     ramValueString.setString(newValue / 10 + "/" + SystemInfo.getMaxRAM() + " GB");
