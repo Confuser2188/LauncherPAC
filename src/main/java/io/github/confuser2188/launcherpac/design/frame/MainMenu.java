@@ -22,8 +22,17 @@ public class MainMenu extends JFrame {
 
     public static StringObject status = new StringObject("");
     public static StringObject mcVersion = new StringObject(settingsAPI.getVal("selectedMCVersion"));
-    public static StringObject ramValueString = new StringObject( settingsAPI.getIntVal("ram") / 10 + "/" + SystemInfo.getMaxRAM() + " GB");
+    public static StringObject ramValueString = new StringObject(settingsAPI.getIntVal("ram") / 10 + "/" + SystemInfo.getMaxRAM() + " GB");
 
+    //lang
+    public static StringObject langPlayButton = new StringObject(langAPI.usingLang.playButton);
+    public static StringObject langSettings = new StringObject(langAPI.usingLang.settings);
+    public static StringObject langAccount = new StringObject(langAPI.usingLang.Account);
+    public static StringObject langJavaSettings = new StringObject(langAPI.usingLang.javaSettings);
+    public static StringObject langVersion = new StringObject(langAPI.usingLang.version);
+    public static StringObject selectedMCVersion = new StringObject(langAPI.usingLang.selectedMinecraftVersion+mcVersion.getString());
+
+    //lang
     public static MainMenu menu;
     private boolean dragging;
     private Point point;
@@ -184,7 +193,7 @@ public class MainMenu extends JFrame {
                     MinecraftBuilder.launch(mcVersion.getString(), username);
                 }
             });
-            this.components.add(new Text(langAPI.usingLang.playButton, 455, 570, new Font("Arial", Font.BOLD, 35), Color.WHITE));
+            this.components.add(new Text(langPlayButton, 455, 570, new Font("Arial", Font.BOLD, 35), Color.WHITE));
             this.components.add(new Text(mcVersion, 478, 590, new Font("Arial", Font.PLAIN, 16), Color.WHITE));
 
             Text version = new Text(Main.VERSION, 998, 595, new Font("Arial", Font.PLAIN, 12), Color.WHITE);
@@ -198,12 +207,12 @@ public class MainMenu extends JFrame {
             // Settings Menu
             this.components.add(new FilledRectangle(150, 100, 700, 370, new Color(0, 0, 0, 200)), 2);
             this.components.add(new Rectangle(150, 100, 700, 370, Color.WHITE), 2);
-            this.components.add(new Text(langAPI.usingLang.settings, 170, 130, new Font("Arial", Font.BOLD, 21), Color.WHITE), 2);
-            this.components.add(new Text(langAPI.usingLang.Account, 180, 190, new Font("Arial", Font.PLAIN, 14), Color.GRAY), 2);
+            this.components.add(new Text(langSettings, 170, 130, new Font("Arial", Font.BOLD, 21), Color.WHITE), 2);
+            this.components.add(new Text(langAccount, 180, 190, new Font("Arial", Font.PLAIN, 14), Color.GRAY), 2);
             this.components.add(new Text("Launcher", 180, 220, new Font("Arial", Font.PLAIN, 14), Color.WHITE), 2);
 
             // Settings Menu -> Launcher
-            this.components.add(new Text(langAPI.usingLang.javaSettings, 350, 150, new Font("Arial", Font.PLAIN, 16), Color.WHITE), 2);
+            this.components.add(new Text(langJavaSettings, 350, 150, new Font("Arial", Font.PLAIN, 16), Color.WHITE), 2);
             this.components.add(new Line(350, 165, 700, 165, Color.GRAY), 2);
             this.components.add(new Text("RAM", 350, 210, new Font("Arial", Font.PLAIN, 12), Color.WHITE), 2);
 
@@ -219,9 +228,8 @@ public class MainMenu extends JFrame {
                 }
             }, 2);
 
-            this.components.add(new Text(langAPI.usingLang.version, 350, 300, new Font("Arial", Font.PLAIN, 16), Color.WHITE), 2);
+            this.components.add(new Text(langVersion, 350, 300, new Font("Arial", Font.PLAIN, 16), Color.WHITE), 2);
             this.components.add(new Line(350, 315, 700, 315, Color.GRAY), 2);
-            StringObject selectedMCVersion = new StringObject(mcVersion.getString()); selectedMCVersion.setPrefix(langAPI.usingLang.selectedMinecraftVersion);
             this.components.add(new Text(selectedMCVersion, 350, 350, new Font("Arial", Font.PLAIN, 16), Color.WHITE), 2);
             this.components.add(new Button(350, 360, 100, 40, new Color(255, 72, 0, 100)) {
                 private String VERSION = "1.8.9";
@@ -235,7 +243,7 @@ public class MainMenu extends JFrame {
                 @Override
                 public void click() {
                     mcVersion.setString(this.VERSION);
-                    selectedMCVersion.setString(this.VERSION);
+                    selectedMCVersion.setString(langAPI.usingLang.selectedMinecraftVersion + this.VERSION);
                     settingsAPI.setVal("selectedMCVersion",this.VERSION);
                 }
             }, 2);
@@ -252,7 +260,7 @@ public class MainMenu extends JFrame {
                 @Override
                 public void click() {
                     mcVersion.setString(this.VERSION);
-                    selectedMCVersion.setString(this.VERSION);
+                    selectedMCVersion.setString(langAPI.usingLang.selectedMinecraftVersion + this.VERSION);
                     settingsAPI.setVal("selectedMCVersion",this.VERSION);
                 }
             }, 2);
@@ -269,7 +277,7 @@ public class MainMenu extends JFrame {
                 @Override
                 public void click() {
                     mcVersion.setString(this.VERSION);
-                    selectedMCVersion.setString(this.VERSION);
+                    selectedMCVersion.setString(langAPI.usingLang.selectedMinecraftVersion + this.VERSION);
                     settingsAPI.setVal("selectedMCVersion",this.VERSION);
                 }
             }, 2);

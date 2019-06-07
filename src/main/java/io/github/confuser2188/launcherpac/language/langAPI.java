@@ -1,6 +1,8 @@
 package io.github.confuser2188.launcherpac.language;
 
+import io.github.confuser2188.launcherpac.design.frame.MainMenu;
 import io.github.confuser2188.launcherpac.fileBaseSettings.settingsAPI;
+import io.github.confuser2188.launcherpac.misc.StringObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,6 +28,13 @@ public class langAPI {
     public static void changeLang(String targetLang){
         settingsAPI.setVal("selectedLang",targetLang);
         usingLang=langs.get(targetLang);
+
+        MainMenu.langAccount.setString(usingLang.Account);
+        MainMenu.langPlayButton.setString(usingLang.playButton);
+        MainMenu.langSettings.setString(usingLang.settings);
+        MainMenu.selectedMCVersion.setString(usingLang.selectedMinecraftVersion+MainMenu.mcVersion.getString());
+        MainMenu.langJavaSettings.setString(usingLang.javaSettings);
+        MainMenu.langVersion.setString(usingLang.version);
     }
 
 

@@ -5,6 +5,7 @@ public class en extends mainLang {
 
     public static mainLang getLang(){
         en x = new en();
+        x.shortlangName="en";
         x.langName="English";
         x.playButton="PLAY";
         x.username="Username:";
