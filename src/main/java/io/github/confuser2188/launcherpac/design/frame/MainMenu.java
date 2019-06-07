@@ -6,7 +6,9 @@ import io.github.confuser2188.launcherpac.design.component.Component;
 import io.github.confuser2188.launcherpac.design.component.*;
 import io.github.confuser2188.launcherpac.design.component.Image;
 import io.github.confuser2188.launcherpac.design.component.Rectangle;
+import io.github.confuser2188.launcherpac.fileBaseSettings.settingsAPI;
 import io.github.confuser2188.launcherpac.game.MinecraftBuilder;
+import io.github.confuser2188.launcherpac.language.langAPI;
 import io.github.confuser2188.launcherpac.misc.*;
 
 import javax.swing.*;
@@ -19,8 +21,8 @@ import java.util.ArrayList;
 public class MainMenu extends JFrame {
 
     public static StringObject status = new StringObject("");
-    public static StringObject mcVersion = new StringObject("1.8.9");
-    public static StringObject ramValueString = new StringObject("1.0/" + SystemInfo.getMaxRAM() + " GB");
+    public static StringObject mcVersion = new StringObject(settingsAPI.getVal("selectedMCVersion"));
+    public static StringObject ramValueString = new StringObject( settingsAPI.getIntVal("ram") / 10 + "/" + SystemInfo.getMaxRAM() + " GB");
 
     public static MainMenu menu;
     private boolean dragging;
@@ -182,7 +184,7 @@ public class MainMenu extends JFrame {
                     MinecraftBuilder.launch(mcVersion.getString(), username);
                 }
             });
-            this.components.add(new Text("PLAY", 455, 570, new Font("Arial", Font.BOLD, 35), Color.WHITE));
+            this.components.add(new Text(langAPI.usingLang.playButton, 455, 570, new Font("Arial", Font.BOLD, 35), Color.WHITE));
             this.components.add(new Text(mcVersion, 478, 590, new Font("Arial", Font.PLAIN, 16), Color.WHITE));
 
             Text version = new Text(Main.VERSION, 998, 595, new Font("Arial", Font.PLAIN, 12), Color.WHITE);
@@ -196,27 +198,30 @@ public class MainMenu extends JFrame {
             // Settings Menu
             this.components.add(new FilledRectangle(150, 100, 700, 370, new Color(0, 0, 0, 200)), 2);
             this.components.add(new Rectangle(150, 100, 700, 370, Color.WHITE), 2);
-            this.components.add(new Text("Settings", 170, 130, new Font("Arial", Font.BOLD, 21), Color.WHITE), 2);
-            this.components.add(new Text("Account", 180, 190, new Font("Arial", Font.PLAIN, 14), Color.GRAY), 2);
+            this.components.add(new Text(langAPI.usingLang.settings, 170, 130, new Font("Arial", Font.BOLD, 21), Color.WHITE), 2);
+            this.components.add(new Text(langAPI.usingLang.Account, 180, 190, new Font("Arial", Font.PLAIN, 14), Color.GRAY), 2);
             this.components.add(new Text("Launcher", 180, 220, new Font("Arial", Font.PLAIN, 14), Color.WHITE), 2);
 
             // Settings Menu -> Launcher
-            this.components.add(new Text("Java Settings", 350, 150, new Font("Arial", Font.PLAIN, 16), Color.WHITE), 2);
+            this.components.add(new Text(langAPI.usingLang.javaSettings, 350, 150, new Font("Arial", Font.PLAIN, 16), Color.WHITE), 2);
             this.components.add(new Line(350, 165, 700, 165, Color.GRAY), 2);
             this.components.add(new Text("RAM", 350, 210, new Font("Arial", Font.PLAIN, 12), Color.WHITE), 2);
 
             Text ramValueText = new Text(ramValueString, 700, 210, new Font("Arial", Font.PLAIN, 12), Color.WHITE); ramValueText.setTabIndex(2); ramValueText.setMirror(true);
             this.components.add(ramValueText);
-            this.components.add(new Slider(350, 220, 350, 10, (int)(Double.parseDouble(SystemInfo.getMaxRAM().replace(",", ".")) * 10), Color.WHITE) {
+            this.components.add(new Slider(350, 220, 350, settingsAPI.getIntVal("ram"), (int)(Double.parseDouble(SystemInfo.getMaxRAM().replace(",", ".")) * 10), Color.WHITE) {
                 @Override
                 public void valueChanged(double newValue) {
                     ramValueString.setString(newValue / 10 + "/" + SystemInfo.getMaxRAM() + " GB");
+                    int valx = (int) newValue;
+                    settingsAPI.setVal("ram",valx+"");
+
                 }
             }, 2);
 
-            this.components.add(new Text("Version", 350, 300, new Font("Arial", Font.PLAIN, 16), Color.WHITE), 2);
+            this.components.add(new Text(langAPI.usingLang.version, 350, 300, new Font("Arial", Font.PLAIN, 16), Color.WHITE), 2);
             this.components.add(new Line(350, 315, 700, 315, Color.GRAY), 2);
-            StringObject selectedMCVersion = new StringObject(mcVersion.getString()); selectedMCVersion.setPrefix("Selected Minecraft version: ");
+            StringObject selectedMCVersion = new StringObject(mcVersion.getString()); selectedMCVersion.setPrefix(langAPI.usingLang.selectedMinecraftVersion);
             this.components.add(new Text(selectedMCVersion, 350, 350, new Font("Arial", Font.PLAIN, 16), Color.WHITE), 2);
             this.components.add(new Button(350, 360, 100, 40, new Color(255, 72, 0, 100)) {
                 private String VERSION = "1.8.9";
@@ -231,6 +236,7 @@ public class MainMenu extends JFrame {
                 public void click() {
                     mcVersion.setString(this.VERSION);
                     selectedMCVersion.setString(this.VERSION);
+                    settingsAPI.setVal("selectedMCVersion",this.VERSION);
                 }
             }, 2);
             this.components.add(new Rectangle(350, 360, 100, 40, Color.WHITE), 2);
@@ -247,6 +253,7 @@ public class MainMenu extends JFrame {
                 public void click() {
                     mcVersion.setString(this.VERSION);
                     selectedMCVersion.setString(this.VERSION);
+                    settingsAPI.setVal("selectedMCVersion",this.VERSION);
                 }
             }, 2);
             this.components.add(new Rectangle(450, 360, 100, 40, Color.WHITE), 2);
@@ -263,6 +270,7 @@ public class MainMenu extends JFrame {
                 public void click() {
                     mcVersion.setString(this.VERSION);
                     selectedMCVersion.setString(this.VERSION);
+                    settingsAPI.setVal("selectedMCVersion",this.VERSION);
                 }
             }, 2);
             this.components.add(new Rectangle(550, 360, 100, 40, Color.WHITE), 2);

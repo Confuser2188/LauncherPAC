@@ -7,6 +7,11 @@ public class tr extends mainLang {
         x.playButton="OYNA";
         x.username="Kullanıcı Adın:";
         x.loginButton="Giriş";
+        x.settings="Ayarlar";
+        x.Account="Hesap";
+        x.javaSettings="Java Ayarları";
+        x.version="Versiyon";
+        x.selectedMinecraftVersion="Seçili Minecraft versiyonu: ";
         return x;
     }
 }

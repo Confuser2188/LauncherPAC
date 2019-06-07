@@ -1,5 +1,7 @@
 package io.github.confuser2188.launcherpac.fileBaseSettings;
 
+import io.github.confuser2188.launcherpac.misc.SystemInfo;
+
 import javax.swing.*;
 import java.io.*;
 import java.nio.file.Path;
@@ -29,9 +31,26 @@ public class settingsAPI {
             if (!prop.containsKey("selectedMCVersion")) {
                 prop.setProperty("selectedMCVersion", "1.8.9");
             }
+            if (!prop.containsKey("ram")) {
+                prop.setProperty("ram", "10");
+            }
             if(!Arrays.asList(versionList).contains(prop.getProperty("selectedMCVersion"))){
                 prop.setProperty("selectedMCVersion", "1.8.9");
             }
+            int max_ram_val= (int)(Double.parseDouble(SystemInfo.getMaxRAM().replace(",", ".")) * 10);
+
+            try
+            {
+                int i = Integer.parseInt(prop.getProperty("ram"));
+                if (i>max_ram_val||i<0){
+                    prop.setProperty("ram", "10");
+                }
+            }
+            catch (NumberFormatException e)
+            {
+                prop.setProperty("ram", "10");
+            }
+
             OutputStream output = new FileOutputStream(System.getenv("SystemDrive")+File.separator+"PAC"+File.separator+"settings.txt");
             prop.store(output,null);
             output.close();
@@ -44,6 +63,10 @@ public class settingsAPI {
 
     public static String getVal(String key){
         return properties.getProperty(key);
+    }
+
+    public static int getIntVal(String key){
+        return Integer.parseInt(properties.getProperty(key));
     }
 
     public static void setVal(String key,String value){
