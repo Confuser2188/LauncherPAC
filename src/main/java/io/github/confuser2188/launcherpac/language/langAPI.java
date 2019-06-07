@@ -15,7 +15,10 @@ public class langAPI {
         langs.put("en",en.getLang());
         langs.put("tr",tr.getLang());
         if(langs.get(settingsAPI.getVal("selectedLang"))==null){
-            settingsAPI.setVal("selectedLang","tr");
+            if (langAPI.systemLangIsTurkish())
+                settingsAPI.setVal("selectedLang", "tr");
+            else
+                settingsAPI.setVal("selectedLang", "en");
         }
         usingLang=langs.get(settingsAPI.getVal("selectedLang"));
     }
@@ -25,5 +28,12 @@ public class langAPI {
         usingLang=langs.get(targetLang);
     }
 
+
+    public static boolean systemLangIsTurkish(){
+        if (System.getProperty("user.language").equalsIgnoreCase("tr")){
+            return true;
+        }
+        return false;
+    }
 
 }

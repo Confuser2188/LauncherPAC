@@ -1,5 +1,6 @@
 package io.github.confuser2188.launcherpac.fileBaseSettings;
 
+import io.github.confuser2188.launcherpac.language.langAPI;
 import io.github.confuser2188.launcherpac.misc.SystemInfo;
 
 import javax.swing.*;
@@ -25,8 +26,12 @@ public class settingsAPI {
             prop.load(input);
             input.close();
             //default
-            if (!prop.containsKey("selectedLang")) {
-                prop.setProperty("selectedLang", "tr");
+            if (!prop.containsKey("selectedLang")) {{
+                if (langAPI.systemLangIsTurkish())
+                    prop.setProperty("selectedLang", "tr");
+                else
+                    prop.setProperty("selectedLang", "en");
+            }
             }
             if (!prop.containsKey("selectedMCVersion")) {
                 prop.setProperty("selectedMCVersion", "1.8.9");
