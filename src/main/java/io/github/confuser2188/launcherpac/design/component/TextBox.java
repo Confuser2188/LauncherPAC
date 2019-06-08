@@ -33,18 +33,9 @@ public class TextBox extends Component implements IKeyboardEvent {
         graphics.drawString(this.text, this.getX() + 5, this.getY() + TEXTBOX_HEIGHT / 2 + 5);
     }
 
-    private long lastKeyPress = 0L;
-    private char lastKey = ' ';
-
     @Override
     public void dispatchKeyEvent(KeyEvent e) {
-        if(!this.canDraw()) return;
-
-        if(lastKeyPress + 100L < System.currentTimeMillis()) {
-            lastKeyPress = System.currentTimeMillis();
-            lastKey = e.getKeyChar();
-        }else
-            return;
+        if(!this.canDraw() || e.getID() != KeyEvent.KEY_PRESSED) return;
 
         if(e.getKeyCode() == 8)
             if(!this.text.isEmpty()){
