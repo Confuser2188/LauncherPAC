@@ -35,6 +35,9 @@ public class langAPI {
         MainMenu.selectedMCVersion.setString(usingLang.selectedMinecraftVersion+MainMenu.mcVersion.getString());
         MainMenu.langJavaSettings.setString(usingLang.javaSettings);
         MainMenu.langVersion.setString(usingLang.version);
+        MainMenu.selectedLangShort.setString(targetLang);
+        MainMenu.selectedLang.setString(langAPI.usingLang.selectedLang+langAPI.usingLang.langName);
+
     }
 
 

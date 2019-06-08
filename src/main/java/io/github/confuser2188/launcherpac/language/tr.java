@@ -13,6 +13,7 @@ public class tr extends mainLang {
         x.javaSettings="Java Ayarları";
         x.version="Versiyon";
         x.selectedMinecraftVersion="Seçili Minecraft versiyonu: ";
+        x.selectedLang="Seçili Dil: ";
         return x;
     }
 }

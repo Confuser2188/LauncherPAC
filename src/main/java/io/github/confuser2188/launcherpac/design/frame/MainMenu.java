@@ -22,6 +22,7 @@ public class MainMenu extends JFrame {
 
     public static StringObject status = new StringObject("");
     public static StringObject mcVersion = new StringObject(settingsAPI.getVal("selectedMCVersion"));
+    public static StringObject selectedLangShort = new StringObject(langAPI.usingLang.shortlangName);
     public static StringObject ramValueString = new StringObject(settingsAPI.getIntVal("ram") / 10 + "/" + SystemInfo.getMaxRAM() + " GB");
 
     //lang
@@ -31,6 +32,7 @@ public class MainMenu extends JFrame {
     public static StringObject langJavaSettings = new StringObject(langAPI.usingLang.javaSettings);
     public static StringObject langVersion = new StringObject(langAPI.usingLang.version);
     public static StringObject selectedMCVersion = new StringObject(langAPI.usingLang.selectedMinecraftVersion+mcVersion.getString());
+    public static StringObject selectedLang = new StringObject(langAPI.usingLang.selectedLang+langAPI.usingLang.langName);
 
     //lang
     public static MainMenu menu;
@@ -208,8 +210,74 @@ public class MainMenu extends JFrame {
             this.components.add(new FilledRectangle(150, 100, 700, 370, new Color(0, 0, 0, 200)), 2);
             this.components.add(new Rectangle(150, 100, 700, 370, Color.WHITE), 2);
             this.components.add(new Text(langSettings, 170, 130, new Font("Arial", Font.BOLD, 21), Color.WHITE), 2);
+
             this.components.add(new Text(langAccount, 180, 190, new Font("Arial", Font.PLAIN, 14), Color.GRAY), 2);
             this.components.add(new Text("Launcher", 180, 220, new Font("Arial", Font.PLAIN, 14), Color.WHITE), 2);
+            this.components.add(new Text("Language / Dil", 180, 250, new Font("Arial", Font.PLAIN, 14), Color.WHITE), 2);
+
+            this.components.add(new FilledRectangle(150, 100, 700, 370, new Color(0, 0, 0, 200)), 3);
+            this.components.add(new Rectangle(150, 100, 700, 370, Color.WHITE), 3);
+            this.components.add(new Text(langSettings, 170, 130, new Font("Arial", Font.BOLD, 21), Color.WHITE), 3);
+
+            this.components.add(new Text(langAccount, 180, 190, new Font("Arial", Font.PLAIN, 14), Color.GRAY), 3);
+            this.components.add(new Text("Launcher", 180, 220, new Font("Arial", Font.PLAIN, 14), Color.WHITE), 3);
+            this.components.add(new Text("Language / Dil", 180, 250, new Font("Arial", Font.PLAIN, 14), Color.WHITE), 3);
+
+            //Launcher button
+            this.components.add(new Button(180, 205, 95, 20, new Color(0, 0, 0, 0)) {
+                @Override
+                public void click() {
+                    if(MainMenu.tabIndex!=3) return;;
+                    MainMenu.tabIndex = 2;
+                }
+            },999);
+            //Language button
+            this.components.add(new Button(180, 235, 95, 20, new Color(0, 0, 0, 0)) {
+                @Override
+                public void click() {
+                    if(MainMenu.tabIndex!=2) return;;
+                    MainMenu.tabIndex = 3;
+                }
+            },999);
+
+            //lang select
+            this.components.add(new Text("Language / Dil", 350, 225, new Font("Arial", Font.PLAIN, 16), Color.WHITE), 3);
+            this.components.add(new Line(350, 240, 700, 240, Color.GRAY), 3);
+            this.components.add(new Text(selectedLang, 350, 270, new Font("Arial", Font.PLAIN, 16), Color.WHITE), 3);
+            this.components.add(new Button(350, 285, 100, 40, new Color(255, 72, 0, 100)) {
+                private String LANG = "TR";
+                @Override
+                public void draw(Graphics graphics) {
+                    if(selectedLangShort.getString().equalsIgnoreCase(this.LANG))
+                        this.setAlpha(255);
+                    super.draw(graphics);
+                }
+
+                @Override
+                public void click() {
+                    if(MainMenu.tabIndex!=3)return;
+                    langAPI.changeLang("tr");
+
+                }
+            }, 3);
+            this.components.add(new Rectangle(350, 285, 100, 40, Color.WHITE), 3);
+            this.components.add(new Button(450, 285, 100, 40, new Color(255, 72, 0, 100)) {
+                private String LANG = "EN";
+                @Override
+                public void draw(Graphics graphics) {
+                    if(selectedLangShort.getString().equalsIgnoreCase(this.LANG))
+                        this.setAlpha(255);
+                    super.draw(graphics);
+                }
+
+                @Override
+                public void click() {
+                    if(MainMenu.tabIndex!=3)return;
+                    langAPI.changeLang("en");
+                }
+            }, 3);
+            this.components.add(new Rectangle(450, 285, 100, 40, Color.WHITE), 3);
+            //
 
             // Settings Menu -> Launcher
             this.components.add(new Text(langJavaSettings, 350, 150, new Font("Arial", Font.PLAIN, 16), Color.WHITE), 2);
@@ -230,7 +298,7 @@ public class MainMenu extends JFrame {
 
             this.components.add(new Text(langVersion, 350, 300, new Font("Arial", Font.PLAIN, 16), Color.WHITE), 2);
             this.components.add(new Line(350, 315, 700, 315, Color.GRAY), 2);
-            this.components.add(new Text(selectedMCVersion, 350, 350, new Font("Arial", Font.PLAIN, 16), Color.WHITE), 2);
+            this.components.add(new Text(selectedMCVersion, 350, 345, new Font("Arial", Font.PLAIN, 16), Color.WHITE), 2);
             this.components.add(new Button(350, 360, 100, 40, new Color(255, 72, 0, 100)) {
                 private String VERSION = "1.8.9";
                 @Override
@@ -242,6 +310,7 @@ public class MainMenu extends JFrame {
 
                 @Override
                 public void click() {
+                    if(MainMenu.tabIndex!=2)return;
                     mcVersion.setString(this.VERSION);
                     selectedMCVersion.setString(langAPI.usingLang.selectedMinecraftVersion + this.VERSION);
                     settingsAPI.setVal("selectedMCVersion",this.VERSION);
@@ -259,6 +328,7 @@ public class MainMenu extends JFrame {
 
                 @Override
                 public void click() {
+                    if(MainMenu.tabIndex!=2)return;
                     mcVersion.setString(this.VERSION);
                     selectedMCVersion.setString(langAPI.usingLang.selectedMinecraftVersion + this.VERSION);
                     settingsAPI.setVal("selectedMCVersion",this.VERSION);
@@ -276,6 +346,7 @@ public class MainMenu extends JFrame {
 
                 @Override
                 public void click() {
+                    if(MainMenu.tabIndex!=2)return;
                     mcVersion.setString(this.VERSION);
                     selectedMCVersion.setString(langAPI.usingLang.selectedMinecraftVersion + this.VERSION);
                     settingsAPI.setVal("selectedMCVersion",this.VERSION);

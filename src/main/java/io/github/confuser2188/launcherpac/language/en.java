@@ -15,6 +15,8 @@ public class en extends mainLang {
         x.javaSettings="Java Settings";
         x.version="Version";
         x.selectedMinecraftVersion="Selected Minecraft version: ";
+        x.selectedLang="Selected Language: ";
+
         return x;
     }
 

@@ -11,5 +11,6 @@ public class mainLang {
     public String javaSettings;
     public String version;
     public String selectedMinecraftVersion;
+    public String selectedLang;
 
 }
