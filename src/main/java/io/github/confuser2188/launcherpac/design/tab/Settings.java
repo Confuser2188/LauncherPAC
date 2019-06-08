@@ -29,7 +29,7 @@ public class Settings extends Tab {
         add(new Button(180, 435, 60, 20, new Color(50, 50, 55, 50)) {
             @Override
             public void click() {
-                MainMenu.tabIndex = 5;
+                MainMenu.tabIndex = 1;
             }
 
             @Override
