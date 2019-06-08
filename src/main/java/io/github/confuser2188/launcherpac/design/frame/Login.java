@@ -2,6 +2,7 @@ package io.github.confuser2188.launcherpac.design.frame;
 
 import io.github.confuser2188.launcherpac.fileBaseSettings.settingsAPI;
 import io.github.confuser2188.launcherpac.language.langAPI;
+import io.github.confuser2188.launcherpac.misc.StringUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -43,7 +44,7 @@ public class Login extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == loginButton) {
             String username = userTextField.getText();
-            if(!isStringOnlyAlphabetAndNum(username)){
+            if(!StringUtils.isValidUsername(username)){
                 JOptionPane.showMessageDialog(this,"Invalid username", "PAC Launcher", JOptionPane.ERROR_MESSAGE);
             }else if(username.length() > 16){
                 JOptionPane.showMessageDialog(this,"Invalid username", "PAC Launcher", JOptionPane.ERROR_MESSAGE);
@@ -53,25 +54,5 @@ public class Login extends JFrame implements ActionListener {
                 dispose();
             }
         }
-    }
-
-    // TODO: Better validity check
-    private static boolean isStringOnlyAlphabetAndNum(String str)
-    {
-        return ((!str.equals(""))
-                && (str
-                .replace("1", "")
-                .replace("2", "")
-                .replace("3", "")
-                .replace("4", "")
-                .replace("5", "")
-                .replace("6", "")
-                .replace("7", "")
-                .replace("8", "")
-                .replace("9", "")
-                .replace("0", "")
-                .replace("_", "")
-
-                .matches("^[a-zA-Z]*$")));
     }
 }

@@ -44,6 +44,8 @@ public abstract class Slider extends Component implements ISlider {
 
     @Override
     public void mouseDragged(MouseEvent e) {
+        if(!this.canDraw()) return;
+
         if(Calc.isInBounds(this.getX(), this.getY() - SLIDER_HEIGHT / 4, this.length, this.SLIDER_HEIGHT, e.getPoint())) {
             this.value = (int) ((e.getX() - this.length) / ((double)this.length / (double)this.maxValue));
             this.valueChanged(this.value);

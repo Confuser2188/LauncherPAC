@@ -3,6 +3,7 @@ package io.github.confuser2188.launcherpac.design.frame;
 import io.github.confuser2188.launcherpac.design.component.Button;
 import io.github.confuser2188.launcherpac.design.component.Component;
 import io.github.confuser2188.launcherpac.design.component.Slider;
+import io.github.confuser2188.launcherpac.design.component.TextBox;
 import io.github.confuser2188.launcherpac.design.tab.*;
 import io.github.confuser2188.launcherpac.fileBaseSettings.settingsAPI;
 import io.github.confuser2188.launcherpac.language.langAPI;
@@ -12,9 +13,7 @@ import io.github.confuser2188.launcherpac.misc.SystemInfo;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
+import java.awt.event.*;
 import java.util.ArrayList;
 
 public class MainMenu extends JFrame {
@@ -78,6 +77,7 @@ public class MainMenu extends JFrame {
             tabs.add(new Settings());
             tabs.add(new LauncherSettings());
             tabs.add(new LanguageSettings());
+            tabs.add(new AccountSettings());
 
             for(Tab tab : tabs)
                 tab.load();
@@ -91,6 +91,16 @@ public class MainMenu extends JFrame {
             this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
             this.setResizable(false);
             setDefaultLookAndFeelDecorated(true);
+
+            KeyEventDispatcher keyEventDispatcher = e -> {
+                for(Tab tab : tabs)
+                    for(Component comp : tab.components){
+                        if(comp instanceof TextBox)
+                            ((TextBox)comp).dispatchKeyEvent(e);
+                    }
+                return true;
+            };
+            KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(keyEventDispatcher);
 
             panel.addMouseListener(new MouseAdapter() {
 
