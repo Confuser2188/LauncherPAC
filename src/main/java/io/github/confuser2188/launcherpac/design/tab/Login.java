@@ -22,9 +22,8 @@ public class Login extends Tab {
     public void load() {
         add(new FilledRectangle(150, 100, 700, 370, new Color(0, 0, 0, 200)));
         add(new Rectangle(150, 100, 700, 370, Color.WHITE));
-        add(new Text(MainMenu.langAccount, 170, 130, new Font("Arial", Font.BOLD, 21), Color.WHITE));
 
-        add(new Text(MainMenu.langAccount, 330, 225, new Font("Arial", Font.PLAIN, 16), Color.WHITE));
+        add(new Text(MainMenu.langLoginButton, 330, 225, new Font("Arial", Font.PLAIN, 16), Color.WHITE));
         add(new Line(330, 240, 670, 240, Color.GRAY));
 
         add(new Text(MainMenu.langUserName, 363, 285, new Font("Arial", Font.PLAIN, 16), Color.WHITE));

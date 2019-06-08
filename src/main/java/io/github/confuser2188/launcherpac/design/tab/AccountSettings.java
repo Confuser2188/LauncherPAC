@@ -54,7 +54,7 @@ public class AccountSettings extends Tab {
 
 
         add(new Rectangle(430, 360, 120, 40, Color.WHITE));
-        add(new Text(langAPI.usingLang.loginButton, 466, 387, new Font("Arial", Font.PLAIN, 20), Color.WHITE));
+        add(new Text(MainMenu.langLoginButton, 466, 387, new Font("Arial", Font.PLAIN, 20), Color.WHITE));
 
     }
 }
