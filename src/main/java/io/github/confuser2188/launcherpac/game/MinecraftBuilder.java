@@ -2,6 +2,7 @@ package io.github.confuser2188.launcherpac.game;
 
 import io.github.confuser2188.launcherpac.Main;
 import io.github.confuser2188.launcherpac.design.frame.MainMenu;
+import io.github.confuser2188.launcherpac.misc.StringUtils;
 
 import java.io.*;
 import java.lang.reflect.Method;
@@ -17,7 +18,7 @@ public class MinecraftBuilder {
                     @Override
                     public void println(String x) {
                         super.println(x);
-                        MainMenu.status.setString(x.replace("[PAC] ", ""));
+                        MainMenu.status.setString(StringUtils.fixLength(x.replace("[PAC] ", ""), 55, true));
                     }
                 };
                 System.setOut(printStream);

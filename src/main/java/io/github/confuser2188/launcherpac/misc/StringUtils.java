@@ -23,4 +23,25 @@ public class StringUtils {
         return true;
     }
 
+    public static String fixLength(String str, int maxLength, boolean addDots){
+        if(maxLength < 0)
+            throw new ArrayIndexOutOfBoundsException("Length cannot be less than zero");
+
+        StringBuilder sb = new StringBuilder();
+        boolean fixed = false;
+        int charCount = 0;
+        for(char ch : str.toCharArray()){
+            sb.append(ch);
+            charCount++;
+
+            if(charCount >= maxLength){
+                fixed = true;
+                break;
+            }
+        }
+
+        if(fixed && addDots) sb.append("...");
+
+        return sb.toString();
+    }
 }
