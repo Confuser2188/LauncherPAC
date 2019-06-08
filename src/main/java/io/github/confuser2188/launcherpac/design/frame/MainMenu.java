@@ -5,6 +5,7 @@ import io.github.confuser2188.launcherpac.design.component.Component;
 import io.github.confuser2188.launcherpac.design.component.Slider;
 import io.github.confuser2188.launcherpac.design.component.TextBox;
 import io.github.confuser2188.launcherpac.design.tab.*;
+import io.github.confuser2188.launcherpac.design.tab.Login;
 import io.github.confuser2188.launcherpac.fileBaseSettings.settingsAPI;
 import io.github.confuser2188.launcherpac.language.langAPI;
 import io.github.confuser2188.launcherpac.misc.Calc;
@@ -25,18 +26,24 @@ public class MainMenu extends JFrame {
 
     //lang
     public static StringObject langPlayButton = new StringObject(langAPI.usingLang.playButton);
+    public static StringObject langUserName = new StringObject(langAPI.usingLang.username);
     public static StringObject langSettings = new StringObject(langAPI.usingLang.settings);
     public static StringObject langAccount = new StringObject(langAPI.usingLang.Account);
     public static StringObject langJavaSettings = new StringObject(langAPI.usingLang.javaSettings);
     public static StringObject langVersion = new StringObject(langAPI.usingLang.version);
     public static StringObject selectedMCVersion = new StringObject(langAPI.usingLang.selectedMinecraftVersion+mcVersion.getString());
     public static StringObject selectedLang = new StringObject(langAPI.usingLang.selectedLang+langAPI.usingLang.langName);
+    public static StringObject langLoginButton = new StringObject(langAPI.usingLang.loginButton);
+    public static StringObject langSaveButton = new StringObject(langAPI.usingLang.saveButton);
 
     public static MainMenu menu;
     public static String USERNAME;
+    public static String CHANGEUSERNAME;
     private boolean dragging;
     private Point point;
     public static int tabIndex = 1;
+
+    public static StringObject userNameStringObject = new StringObject("");
 
     private ArrayList<Tab> tabs = new ArrayList<>();
 
@@ -67,7 +74,8 @@ public class MainMenu extends JFrame {
 
     public MainMenu(String username) {
         USERNAME = username;
-
+        CHANGEUSERNAME=username;
+        userNameStringObject.setString(username);
         try {
             menu = this;
 
@@ -78,6 +86,7 @@ public class MainMenu extends JFrame {
             tabs.add(new LauncherSettings());
             tabs.add(new LanguageSettings());
             tabs.add(new AccountSettings());
+            tabs.add(new Login());
 
             for(Tab tab : tabs)
                 tab.load();
@@ -178,6 +187,7 @@ public class MainMenu extends JFrame {
             new Timer(10, (actionEvent) -> {
                 if(!dragging) panel.repaint();
             }).start();
+            this.tabIndex=6;
         } catch (Exception e) {
             e.printStackTrace();
         }

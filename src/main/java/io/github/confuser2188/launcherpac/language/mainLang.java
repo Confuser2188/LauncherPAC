@@ -12,5 +12,8 @@ public class mainLang {
     public String version;
     public String selectedMinecraftVersion;
     public String selectedLang;
+    public String usernameLenghtError;
+    public String firstLogin;
+    public String saveButton;
 
 }

@@ -23,6 +23,18 @@ public class Settings extends Tab {
        add(new Text(MainMenu.langAccount, 180, 190, new Font("Arial", Font.PLAIN, 14), Color.WHITE));
        add(new Text("Launcher", 180, 220, new Font("Arial", Font.PLAIN, 14), Color.WHITE));
        add(new Text("Language / Dil", 180, 250, new Font("Arial", Font.PLAIN, 14), Color.WHITE));
+       add(new Text(MainMenu.langSaveButton, 180, 450, new Font("Arial", Font.BOLD, 17), Color.WHITE));
+
+       // Global Save Button
+        add(new Button(180, 435, 60, 20, new Color(50, 50, 55, 50)) {
+            @Override
+            public void click() {
+                MainMenu.tabIndex = 5;
+            }
+
+            @Override
+            public void draw(Graphics graphics) { }
+        });
 
         // AccountSettings button
         add(new Button(180, 175, 95, 20, new Color(0, 0, 0, 0)) {

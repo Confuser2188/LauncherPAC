@@ -36,6 +36,9 @@ public class langAPI {
         MainMenu.langJavaSettings.setString(usingLang.javaSettings);
         MainMenu.langVersion.setString(usingLang.version);
         MainMenu.selectedLangShort.setString(targetLang);
+        MainMenu.langUserName.setString(usingLang.username);
+        MainMenu.langLoginButton.setString(usingLang.loginButton);
+        MainMenu.langSaveButton.setString(usingLang.saveButton);
         MainMenu.selectedLang.setString(langAPI.usingLang.selectedLang+langAPI.usingLang.langName);
 
     }

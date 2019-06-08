@@ -14,6 +14,9 @@ public class tr extends mainLang {
         x.version="Versiyon";
         x.selectedMinecraftVersion="Seçili Minecraft versiyonu: ";
         x.selectedLang="Seçili Dil: ";
+        x.usernameLenghtError="Kullanıcı adı en az 3 karakter olmalıdır.";
+        x.firstLogin="Giriş yapmadan oyunu başlatamazsınız.";
+        x.saveButton="Kaydet";
         return x;
     }
 }

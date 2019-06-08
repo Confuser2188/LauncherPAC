@@ -21,6 +21,10 @@ public class Image extends Component {
         this.height = height;
     }
 
+    public void setImg(java.awt.Image img){
+        this.image=img;
+    }
+
     @Override
     public void draw(Graphics graphics) {
         if(width == 0 && height == 0) graphics.drawImage(this.image, this.getX(), this.getY(), null);
