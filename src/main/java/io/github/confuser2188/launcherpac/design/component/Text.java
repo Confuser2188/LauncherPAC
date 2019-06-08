@@ -9,7 +9,7 @@ public class Text extends Component {
     private Font font;
     private String text;
     private StringObject string;
-    private boolean mirror;
+    private boolean centered, mirror;
 
     public Text(String text, int x, int y, Color color) {
         super(x, y, color);
@@ -47,13 +47,20 @@ public class Text extends Component {
             graphics.setFont(this.font);
         graphics.setColor(this.getColor());
 
-        if(this.mirror){
+        if(this.centered) {
+            if(string != null) graphics.drawString(this.string.getString(), this.getX() - graphics.getFontMetrics().stringWidth(this.string.getString()) / 2, this.getY());
+            else graphics.drawString(this.getText(), this.getX() - graphics.getFontMetrics().stringWidth(this.getText()) / 2, this.getY());
+        }else if(this.mirror){
             if(string != null) graphics.drawString(this.string.getString(), this.getX() - graphics.getFontMetrics().stringWidth(this.string.getString()), this.getY());
             else graphics.drawString(this.getText(), this.getX() - graphics.getFontMetrics().stringWidth(this.getText()), this.getY());
         }else{
             if(string != null) graphics.drawString(this.string.getString(), this.getX(), this.getY());
             else graphics.drawString(this.getText(), this.getX(), this.getY());
         }
+    }
+
+    public void setCentered(boolean centered) {
+        this.centered = centered;
     }
 
     public void setMirror(boolean mirror) {

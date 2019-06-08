@@ -35,12 +35,16 @@ public abstract class Button extends Component implements IMouseEvents {
 
     @Override
     public void mouseClicked(MouseEvent event) {
+        if(!this.canDraw()) return;
+
         if(Calc.isInBounds(this.getX(), this.getY(), this.getWidth(), this.getHeight(), event.getPoint()))
             this.click();
     }
 
     @Override
     public boolean mouseMoved(MouseEvent event) {
+        if(!this.canDraw()) return false;
+
         isInBounds = Calc.isInBounds(this.getX(), this.getY(), this.getWidth(), this.getHeight(), event.getPoint());
 
         if(isInBounds)

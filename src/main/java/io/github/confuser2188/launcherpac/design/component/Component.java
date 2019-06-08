@@ -6,11 +6,10 @@ import java.awt.*;
 
 public abstract class Component implements IComponent {
 
-    private String name;
     private int x;
     private int y;
     private Color color;
-    private int tabIndex;
+    private int[] tabIndex;
 
     public Component(int x, int y, Color color) {
         this.x = x;
@@ -24,23 +23,19 @@ public abstract class Component implements IComponent {
     }
 
     public boolean canDraw(){
-        return this.getTabIndex() == 0 || MainMenu.tabIndex == this.getTabIndex();
+        if(this.getTabIndex() != null)
+            for(int i : this.tabIndex)
+                if(MainMenu.tabIndex == i)
+                    return true;
+        return this.getTabIndex() == null || this.getTabIndex()[0] == 0;
     }
 
-    public void setTabIndex(int tabIndex) {
+    public void setTabIndex(int... tabIndex) {
         this.tabIndex = tabIndex;
     }
 
-    public int getTabIndex() {
+    public int[] getTabIndex() {
         return tabIndex;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public int getX() {

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class ComponentArrayList extends ArrayList<Component> {
     
-    public void add(Component comp, int tabIndex){
+    public void add(Component comp, int... tabIndex){
         comp.setTabIndex(tabIndex);
         this.add(comp);
     }
