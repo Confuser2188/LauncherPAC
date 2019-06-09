@@ -29,8 +29,7 @@ public class Global extends Tab {
         add(new Button(5, 5, 20, 20, new Color(15, 15, 15, 255)) {
             @Override
             public void click() {
-                if (MainMenu.tabIndex==6)
-                    return;
+                if (MainMenu.tabIndex == 6) return;
 
                 MainMenu.tabIndex = (MainMenu.tabIndex == 1) ? 3 : 1;
             }
@@ -61,6 +60,7 @@ public class Global extends Tab {
                     JOptionPane.showMessageDialog(null, langAPI.usingLang.firstLogin, "PAC", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
+
                 MainMenu.tabIndex = 1;
                 this.setEnabled(false);
                 drawQueue.add(new Rectangle(282, 441, 435, 63, new Color(240, 90, 35)));

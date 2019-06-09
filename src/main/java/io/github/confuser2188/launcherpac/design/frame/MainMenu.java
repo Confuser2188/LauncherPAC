@@ -38,7 +38,6 @@ public class MainMenu extends JFrame {
 
     public static MainMenu menu;
     public static String USERNAME;
-    public static String CHANGEUSERNAME;
     private boolean dragging;
     private Point point;
     public static int tabIndex = 1;
@@ -74,8 +73,8 @@ public class MainMenu extends JFrame {
 
     public MainMenu(String username) {
         USERNAME = username;
-        CHANGEUSERNAME=username;
         userNameStringObject.setString(username);
+
         try {
             menu = this;
 

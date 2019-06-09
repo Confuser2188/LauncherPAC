@@ -15,7 +15,7 @@ public class tr extends mainLang {
         x.selectedMinecraftVersion="Seçili Minecraft versiyonu: ";
         x.selectedLang="Seçili Dil: ";
         x.usernameLenghtError="Kullanıcı adı en az 3 karakter olmalıdır.";
-        x.firstLogin="Giriş yapmadan oyunu başlatamazsınız.";
+        x.firstLogin="Oyunu başlatmadan önce giriş yapmalısın.";
         x.saveButton="Kaydet";
         return x;
     }

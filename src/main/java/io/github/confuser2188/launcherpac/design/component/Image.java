@@ -21,8 +21,8 @@ public class Image extends Component {
         this.height = height;
     }
 
-    public void setImg(java.awt.Image img){
-        this.image=img;
+    public void setImage(java.awt.Image img){
+        this.image = img;
     }
 
     @Override

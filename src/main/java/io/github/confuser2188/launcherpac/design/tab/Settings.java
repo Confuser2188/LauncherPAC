@@ -5,6 +5,7 @@ import io.github.confuser2188.launcherpac.design.component.FilledRectangle;
 import io.github.confuser2188.launcherpac.design.component.Rectangle;
 import io.github.confuser2188.launcherpac.design.component.Text;
 import io.github.confuser2188.launcherpac.design.frame.MainMenu;
+import io.github.confuser2188.launcherpac.misc.CustomImage;
 
 import java.awt.*;
 
@@ -23,13 +24,17 @@ public class Settings extends Tab {
        add(new Text(MainMenu.langAccount, 180, 190, new Font("Arial", Font.PLAIN, 14), Color.WHITE));
        add(new Text("Launcher", 180, 220, new Font("Arial", Font.PLAIN, 14), Color.WHITE));
        add(new Text("Language / Dil", 180, 250, new Font("Arial", Font.PLAIN, 14), Color.WHITE));
-       add(new Text(MainMenu.langSaveButton, 180, 450, new Font("Arial", Font.BOLD, 17), Color.WHITE));
 
-       // Global Save Button
+       add(new Text(MainMenu.langSaveButton, 180, 450, new Font("Arial", Font.PLAIN, 17), Color.WHITE));
+
+       // Save Button
         add(new Button(180, 435, 60, 20, new Color(50, 50, 55, 50)) {
             @Override
             public void click() {
                 MainMenu.tabIndex = 1;
+
+                MainMenu.userNameStringObject.setString(MainMenu.USERNAME);
+                Global.bustImage.setImage(CustomImage.getImageFromURL(MainMenu.USERNAME));
             }
 
             @Override

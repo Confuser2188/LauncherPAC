@@ -17,7 +17,7 @@ public class en extends mainLang {
         x.selectedMinecraftVersion="Selected Minecraft version: ";
         x.selectedLang="Selected Language: ";
         x.usernameLenghtError="Username must be at least three characters.";
-        x.firstLogin="You can't start game without login.";
+        x.firstLogin="You have to login before starting game.";
         x.saveButton="Save";
         return x;
     }
