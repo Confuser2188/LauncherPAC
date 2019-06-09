@@ -37,12 +37,10 @@ public class MainMenu extends JFrame {
     public static StringObject langSaveButton = new StringObject(langAPI.usingLang.saveButton);
 
     public static MainMenu menu;
-    public static String USERNAME;
+    public static StringObject USERNAME;
     private boolean dragging;
     private Point point;
     public static int tabIndex = 1;
-
-    public static StringObject userNameStringObject = new StringObject("");
 
     private ArrayList<Tab> tabs = new ArrayList<>();
 
@@ -72,8 +70,7 @@ public class MainMenu extends JFrame {
     };
 
     public MainMenu(String username) {
-        USERNAME = username;
-        userNameStringObject.setString(username);
+        USERNAME = new StringObject(username);
 
         try {
             menu = this;

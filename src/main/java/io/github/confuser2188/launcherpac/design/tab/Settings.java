@@ -33,8 +33,8 @@ public class Settings extends Tab {
             public void click() {
                 MainMenu.tabIndex = 1;
 
-                MainMenu.userNameStringObject.setString(MainMenu.USERNAME);
-                Global.bustImage.setImage(CustomImage.getImageFromURL(MainMenu.USERNAME));
+                MainMenu.USERNAME.setString(AccountSettings.userNameInput.getText());
+                Global.bustImage.setImage(CustomImage.getImageFromURL(MainMenu.USERNAME.getString()));
             }
 
             @Override

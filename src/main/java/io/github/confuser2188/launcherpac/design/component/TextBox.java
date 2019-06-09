@@ -19,10 +19,6 @@ public class TextBox extends Component implements IKeyboardEvent {
         this.maxCharacters = maxCharacters;
     }
 
-    public void setText(String text){
-        this.text=text;
-    }
-
     @Override
     public void draw(Graphics graphics) {
         if(!this.canDraw()) return;
@@ -51,5 +47,13 @@ public class TextBox extends Component implements IKeyboardEvent {
             return;
 
         this.text += e.getKeyChar();
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text){
+        this.text = text;
     }
 }

@@ -25,21 +25,15 @@ public class Login extends Tab {
             add(new Line(250, 240, 750, 240, Color.GRAY));
 
             add(new Text(MainMenu.langUserName, 363, 285, new Font("Arial", Font.PLAIN, 16), Color.WHITE));
-            add(new TextBox(MainMenu.USERNAME, 463, 270, 150, 16){
-                @Override
-                public void dispatchKeyEvent(KeyEvent e) {
-                    super.dispatchKeyEvent(e);
-                    MainMenu.USERNAME = this.text;
-                }
-            });
+            add(new TextBox(MainMenu.USERNAME.getString(), 463, 270, 150, 16));
 
             add(new Button(405, 350, 170, 40, new Color(255, 72, 0, 150)) {
                 @Override
                 public void click() {
-                    Global.bustImage.setImage(CustomImage.getImageFromURL(MainMenu.USERNAME));
-                    MainMenu.userNameStringObject.setString(MainMenu.USERNAME);
                     MainMenu.tabIndex = 1;
-                    AccountSettings.userNameInput.setText(MainMenu.USERNAME);
+
+                    Global.bustImage.setImage(CustomImage.getImageFromURL(MainMenu.USERNAME.getString()));
+                    AccountSettings.userNameInput.setText(MainMenu.USERNAME.getString());
                 }
             });
             add(new Rectangle(405, 350, 170, 40, Color.WHITE));
