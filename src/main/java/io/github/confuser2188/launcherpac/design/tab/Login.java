@@ -6,6 +6,7 @@ import io.github.confuser2188.launcherpac.design.component.Rectangle;
 import io.github.confuser2188.launcherpac.design.frame.MainMenu;
 import io.github.confuser2188.launcherpac.language.langAPI;
 import io.github.confuser2188.launcherpac.misc.CustomImage;
+import io.github.confuser2188.launcherpac.misc.StringObject;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -25,13 +26,15 @@ public class Login extends Tab {
             add(new Line(250, 240, 750, 240, Color.GRAY));
 
             add(new Text(MainMenu.langUserName, 363, 285, new Font("Arial", Font.PLAIN, 16), Color.WHITE));
-            add(new TextBox(MainMenu.USERNAME.getString(), 463, 270, 150, 16));
+            TextBox userNameTextBox = new TextBox(MainMenu.USERNAME.getString(), 463, 270, 150, 16);
+            add(userNameTextBox);
 
             add(new Button(405, 350, 170, 40, new Color(255, 72, 0, 150)) {
                 @Override
                 public void click() {
                     MainMenu.tabIndex = 1;
 
+                    MainMenu.USERNAME.setString(userNameTextBox.getText());
                     Global.bustImage.setImage(CustomImage.getImageFromURL(MainMenu.USERNAME.getString()));
                     AccountSettings.userNameInput.setText(MainMenu.USERNAME.getString());
                 }
