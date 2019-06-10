@@ -2,7 +2,6 @@ package io.github.confuser2188.launcherpac;
 
 
 
-import io.github.confuser2188.launcherpac.design.frame.Login;
 import io.github.confuser2188.launcherpac.design.frame.MainMenu;
 import io.github.confuser2188.launcherpac.fileBaseSettings.settingsAPI;
 import io.github.confuser2188.launcherpac.language.langAPI;
