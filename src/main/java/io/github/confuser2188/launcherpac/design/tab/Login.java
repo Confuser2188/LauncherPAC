@@ -33,7 +33,7 @@ public class Login extends Tab {
                     MainMenu.tabIndex = 1;
 
                     MainMenu.USERNAME.setString(userNameTextBox.getText());
-                    Global.bustImage.setImage(CustomImage.getImageFromURL(MainMenu.USERNAME.getString()));
+                    Global.skinImage.setImage(CustomImage.getImageFromURL(MainMenu.USERNAME.getString()));
                     AccountSettings.userNameInput.setText(MainMenu.USERNAME.getString());
                 }
             });

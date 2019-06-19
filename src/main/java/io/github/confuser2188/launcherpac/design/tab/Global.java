@@ -18,7 +18,8 @@ public class Global extends Tab {
         super(0);
     }
 
-    public static Image bustImage;
+    public static Image skinImage;
+
     @Override
     public void load() {
         // Background
@@ -80,8 +81,8 @@ public class Global extends Tab {
         add(version);
 
         //add(new FilledRectangle(8, 538, 54, 54, new Color(0, 0, 0, 255)));
-        bustImage = new Image(CustomImage.getImageFromURL(MainMenu.USERNAME.getString()), 10, 540, 50, 50);
-        add(bustImage);
+        skinImage = new Image(CustomImage.getImageFromURL(MainMenu.USERNAME.getString()), 10, 540, 50, 50);
+        add(skinImage);
         add(new Text(MainMenu.USERNAME, 70, 570, new Font("Arial", Font.PLAIN, 16), Color.WHITE));
     }
 

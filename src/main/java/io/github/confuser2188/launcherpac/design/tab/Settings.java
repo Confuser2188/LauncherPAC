@@ -37,7 +37,7 @@ public class Settings extends Tab {
 
                 SettingsManager.setProperty("username", AccountSettings.userNameInput.getText());
                 MainMenu.USERNAME.setString(AccountSettings.userNameInput.getText());
-                Global.bustImage.setImage(CustomImage.getImageFromURL(MainMenu.USERNAME.getString()));
+                Global.skinImage.setImage(CustomImage.getImageFromURL(MainMenu.USERNAME.getString()));
             }
 
             @Override
