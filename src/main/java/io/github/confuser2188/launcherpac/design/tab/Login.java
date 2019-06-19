@@ -4,12 +4,10 @@ import io.github.confuser2188.launcherpac.design.component.*;
 import io.github.confuser2188.launcherpac.design.component.Button;
 import io.github.confuser2188.launcherpac.design.component.Rectangle;
 import io.github.confuser2188.launcherpac.design.frame.MainMenu;
-import io.github.confuser2188.launcherpac.language.langAPI;
 import io.github.confuser2188.launcherpac.misc.CustomImage;
-import io.github.confuser2188.launcherpac.misc.StringObject;
+import io.github.confuser2188.launcherpac.settings.language.Language;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
 
 public class Login extends Tab {
 
@@ -22,10 +20,10 @@ public class Login extends Tab {
             add(new FilledRectangle(150, 150, 700, 290, new Color(0, 0, 0, 200)));
             add(new Rectangle(150, 150, 700, 290, Color.WHITE));
 
-            add(new Text(MainMenu.langLoginButton, 250, 225, new Font("Arial", Font.PLAIN, 16), Color.WHITE));
+            add(new Text(Language.selected.getValue("loginTab"), 250, 225, new Font("Arial", Font.PLAIN, 16), Color.WHITE));
             add(new Line(250, 240, 750, 240, Color.GRAY));
 
-            add(new Text(MainMenu.langUserName, 363, 285, new Font("Arial", Font.PLAIN, 16), Color.WHITE));
+            add(new Text(Language.selected.getValue("accountTab_username"), 363, 285, new Font("Arial", Font.PLAIN, 16), Color.WHITE));
             TextBox userNameTextBox = new TextBox(MainMenu.USERNAME.getString(), 463, 270, 150, 16);
             add(userNameTextBox);
 
@@ -40,6 +38,6 @@ public class Login extends Tab {
                 }
             });
             add(new Rectangle(405, 350, 170, 40, Color.WHITE));
-            add(new Text(langAPI.usingLang.loginButton, 466, 377, new Font("Arial", Font.PLAIN, 20), Color.WHITE));
+            add(new Text(Language.selected.getValue("loginTab"), 466, 377, new Font("Arial", Font.PLAIN, 20), Color.WHITE));
     }
 }

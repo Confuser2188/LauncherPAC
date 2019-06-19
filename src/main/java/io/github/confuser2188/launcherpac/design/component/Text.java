@@ -7,7 +7,7 @@ import java.awt.*;
 public class Text extends Component {
 
     private Font font;
-    private String text;
+    private String text, prefix = "", suffix = "";
     private StringObject string;
     private boolean centered, mirror;
 
@@ -48,14 +48,14 @@ public class Text extends Component {
         graphics.setColor(this.getColor());
 
         if(this.centered) {
-            if(string != null) graphics.drawString(this.string.getString(), this.getX() - graphics.getFontMetrics().stringWidth(this.string.getString()) / 2, this.getY());
-            else graphics.drawString(this.getText(), this.getX() - graphics.getFontMetrics().stringWidth(this.getText()) / 2, this.getY());
+            if(string != null) graphics.drawString(this.prefix + this.string.getString() + this.suffix, this.getX() - graphics.getFontMetrics().stringWidth(this.string.getString()) / 2, this.getY());
+            else graphics.drawString(this.prefix + this.getText() + this.suffix, this.getX() - graphics.getFontMetrics().stringWidth(this.getText()) / 2, this.getY());
         }else if(this.mirror){
-            if(string != null) graphics.drawString(this.string.getString(), this.getX() - graphics.getFontMetrics().stringWidth(this.string.getString()), this.getY());
-            else graphics.drawString(this.getText(), this.getX() - graphics.getFontMetrics().stringWidth(this.getText()), this.getY());
+            if(string != null) graphics.drawString(this.prefix + this.string.getString() + this.suffix, this.getX() - graphics.getFontMetrics().stringWidth(this.string.getString()), this.getY());
+            else graphics.drawString(this.prefix + this.getText() + this.suffix, this.getX() - graphics.getFontMetrics().stringWidth(this.getText()), this.getY());
         }else{
-            if(string != null) graphics.drawString(this.string.getString(), this.getX(), this.getY());
-            else graphics.drawString(this.getText(), this.getX(), this.getY());
+            if(string != null) graphics.drawString(this.prefix + this.string.getString() + this.suffix, this.getX(), this.getY());
+            else graphics.drawString(this.prefix + this.getText() + this.suffix, this.getX(), this.getY());
         }
     }
 
@@ -73,5 +73,13 @@ public class Text extends Component {
 
     public String getText() {
         return text;
+    }
+
+    public void setPrefix(String prefix) {
+        this.prefix = prefix;
+    }
+
+    public void setSuffix(String suffix) {
+        this.suffix = suffix;
     }
 }

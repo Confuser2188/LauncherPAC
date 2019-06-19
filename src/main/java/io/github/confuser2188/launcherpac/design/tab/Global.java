@@ -4,8 +4,8 @@ import io.github.confuser2188.launcherpac.Main;
 import io.github.confuser2188.launcherpac.design.component.*;
 import io.github.confuser2188.launcherpac.design.frame.MainMenu;
 import io.github.confuser2188.launcherpac.game.MinecraftBuilder;
-import io.github.confuser2188.launcherpac.language.langAPI;
 import io.github.confuser2188.launcherpac.misc.CustomImage;
+import io.github.confuser2188.launcherpac.settings.language.Language;
 
 import javax.swing.*;
 import java.awt.Color;
@@ -56,8 +56,8 @@ public class Global extends Tab {
         add(new Button(381, 532, 237, 381, new Color(21, 21, 21, 150)) {
             @Override
             public void click() {
-                if (MainMenu.tabIndex==6) {
-                    JOptionPane.showMessageDialog(null, langAPI.usingLang.firstLogin, "PAC", JOptionPane.ERROR_MESSAGE);
+                if (MainMenu.tabIndex == 6) {
+                    new Thread(() -> JOptionPane.showMessageDialog(null, Language.selected.getValue("loginRequired"), "PAC", JOptionPane.ERROR_MESSAGE));
                     return;
                 }
 
@@ -70,7 +70,7 @@ public class Global extends Tab {
                 MinecraftBuilder.launch(MainMenu.mcVersion.getString(), MainMenu.USERNAME.getString());
             }
         });
-        Text playText = new Text(MainMenu.langPlayButton, 500, 570, new Font("Arial", Font.BOLD, 35), Color.WHITE); playText.setCentered(true);
+        Text playText = new Text(Language.selected.getValue("playButton"), 500, 570, new Font("Arial", Font.BOLD, 35), Color.WHITE); playText.setCentered(true);
         add(playText);
         Text mcVersionText = new Text(MainMenu.mcVersion, 500, 590, new Font("Arial", Font.PLAIN, 16), Color.WHITE); mcVersionText.setCentered(true);
         add(mcVersionText);

@@ -5,42 +5,29 @@ import io.github.confuser2188.launcherpac.design.component.Component;
 import io.github.confuser2188.launcherpac.design.component.Slider;
 import io.github.confuser2188.launcherpac.design.component.TextBox;
 import io.github.confuser2188.launcherpac.design.tab.*;
-import io.github.confuser2188.launcherpac.design.tab.Login;
-import io.github.confuser2188.launcherpac.fileBaseSettings.settingsAPI;
-import io.github.confuser2188.launcherpac.language.langAPI;
 import io.github.confuser2188.launcherpac.misc.Calc;
 import io.github.confuser2188.launcherpac.misc.StringObject;
 import io.github.confuser2188.launcherpac.misc.SystemInfo;
+import io.github.confuser2188.launcherpac.settings.SettingsManager;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.util.ArrayList;
 
 public class MainMenu extends JFrame {
 
     public static StringObject status = new StringObject("");
-    public static StringObject mcVersion = new StringObject(settingsAPI.getVal("selectedMCVersion"));
-    public static StringObject selectedLangShort = new StringObject(langAPI.usingLang.shortlangName);
-    public static StringObject ramValueString = new StringObject(settingsAPI.getIntVal("ram") / 10 + "/" + SystemInfo.getMaxRAM() + " GB");
-
-    //lang
-    public static StringObject langPlayButton = new StringObject(langAPI.usingLang.playButton);
-    public static StringObject langUserName = new StringObject(langAPI.usingLang.username);
-    public static StringObject langSettings = new StringObject(langAPI.usingLang.settings);
-    public static StringObject langAccount = new StringObject(langAPI.usingLang.Account);
-    public static StringObject langJavaSettings = new StringObject(langAPI.usingLang.javaSettings);
-    public static StringObject langVersion = new StringObject(langAPI.usingLang.version);
-    public static StringObject selectedMCVersion = new StringObject(langAPI.usingLang.selectedMinecraftVersion+mcVersion.getString());
-    public static StringObject selectedLang = new StringObject(langAPI.usingLang.selectedLang+langAPI.usingLang.langName);
-    public static StringObject langLoginButton = new StringObject(langAPI.usingLang.loginButton);
-    public static StringObject langSaveButton = new StringObject(langAPI.usingLang.saveButton);
+    public static StringObject mcVersion = new StringObject(SettingsManager.getProperties().getProperty("mcVersion"));
+    public static StringObject ramValueString = new StringObject("1.0/" + SystemInfo.getMaxRAM() + " GB");
 
     public static MainMenu menu;
     public static StringObject USERNAME;
     private boolean dragging;
     private Point point;
-    public static int tabIndex = 1;
+    public static int tabIndex = 6;
 
     private ArrayList<Tab> tabs = new ArrayList<>();
 
@@ -183,7 +170,6 @@ public class MainMenu extends JFrame {
             new Timer(10, (actionEvent) -> {
                 if(!dragging) panel.repaint();
             }).start();
-            this.tabIndex=6;
         } catch (Exception e) {
             e.printStackTrace();
         }
