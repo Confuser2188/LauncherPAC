@@ -80,9 +80,7 @@ public class Global extends Tab {
         version.setMirror(true);
         add(version);
 
-        //add(new FilledRectangle(8, 538, 54, 54, new Color(0, 0, 0, 255)));
-        skinImage = new Image(CustomImage.getImageFromURL(MainMenu.USERNAME.getString()), 10, 540, 50, 50);
-        add(skinImage);
+        add(skinImage = new Image(CustomImage.getImageFromURL(MainMenu.USERNAME.getString()), 10, 540, 50, 50));
         add(new Text(MainMenu.USERNAME, 70, 570, new Font("Arial", Font.PLAIN, 16), Color.WHITE));
     }
 

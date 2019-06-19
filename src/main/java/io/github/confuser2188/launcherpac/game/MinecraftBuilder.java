@@ -14,6 +14,7 @@ public class MinecraftBuilder {
     public static void launch(String version, String username) {
         new Thread(() ->{
             try {
+                // Listen output of LoaderPAC as status
                 PrintStream printStream = new PrintStream(System.out){
                     @Override
                     public void println(String x) {
@@ -25,6 +26,10 @@ public class MinecraftBuilder {
 
                 MainMenu.status.setString("Extracting PAC...");
                 String pacPath = extract();
+                if(pacPath == null) {
+                    MainMenu.status.setString("Something went wrong while extracting loader.lib");
+                    throw new NullPointerException("Path of LoaderPAC");
+                }
 
                 MainMenu.status.setString("Loading Minecraft. This may take a while...");
 
@@ -43,10 +48,11 @@ public class MinecraftBuilder {
                         "-Xmx" + (int)(Double.parseDouble(MainMenu.ramValueString.getString().split("/")[0].replace(",", ".")) * 1024) + "M",
                 };
 
+                // Call main method of LoaderPAC to launch Minecraft
                 Class<?> classToLoad = Class.forName("io.github.confuser2188.loaderpac.Main", true, child);
                 Method method = classToLoad.getDeclaredMethod("main", String[].class);
                 method.setAccessible(true);
-                method.invoke(null, (Object) args);
+                method.invoke(null, (Object) args); // invoke using args
             } catch (Exception e) {
                 e.printStackTrace();
                 MainMenu.status.setString("Failed to launch Minecraft.");
@@ -54,6 +60,10 @@ public class MinecraftBuilder {
         }).start();
     }
 
+    /**
+     * Extracts LoaderPAC file
+     * @return path of extracted LoaderPAC file
+     */
     private static String extract(){
         try {
             InputStream fileStream = Main.class.getResourceAsStream("/assets/anticheat/LoaderPAC.lib");

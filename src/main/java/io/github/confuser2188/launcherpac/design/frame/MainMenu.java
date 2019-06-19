@@ -7,7 +7,6 @@ import io.github.confuser2188.launcherpac.design.component.TextBox;
 import io.github.confuser2188.launcherpac.design.tab.*;
 import io.github.confuser2188.launcherpac.misc.Calc;
 import io.github.confuser2188.launcherpac.misc.StringObject;
-import io.github.confuser2188.launcherpac.misc.SystemInfo;
 import io.github.confuser2188.launcherpac.settings.SettingsManager;
 
 import javax.swing.*;
@@ -21,7 +20,7 @@ public class MainMenu extends JFrame {
 
     public static StringObject status = new StringObject("");
     public static StringObject mcVersion = new StringObject(SettingsManager.getProperties().getProperty("mcVersion"));
-    public static StringObject ramValueString = new StringObject("1.0");
+    public static StringObject ramValueString = new StringObject(SettingsManager.getProperties().getProperty("ram"));
 
     public static MainMenu menu;
     public static StringObject USERNAME;
@@ -57,11 +56,10 @@ public class MainMenu extends JFrame {
     };
 
     public MainMenu(String username) {
+        menu = this;
         USERNAME = new StringObject(username);
 
         try {
-            menu = this;
-
             // Setup tabs
             tabs.add(new Global());
             tabs.add(new MainTab());
@@ -84,6 +82,7 @@ public class MainMenu extends JFrame {
             this.setResizable(false);
             setDefaultLookAndFeelDecorated(true);
 
+            // Key listener
             KeyEventDispatcher keyEventDispatcher = e -> {
                 for(Tab tab : tabs)
                     for(Component comp : tab.components){
@@ -94,8 +93,8 @@ public class MainMenu extends JFrame {
             };
             KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(keyEventDispatcher);
 
+            // Mouse listener
             panel.addMouseListener(new MouseAdapter() {
-
                 @Override
                 public void mousePressed(MouseEvent e) {
                     super.mousePressed(e);
@@ -131,6 +130,7 @@ public class MainMenu extends JFrame {
                 }
             });
 
+            // Mouse motion listener
             panel.addMouseMotionListener(new MouseMotionAdapter() {
                 @Override
                 public void mouseMoved(MouseEvent e) {
@@ -163,7 +163,7 @@ public class MainMenu extends JFrame {
                 }
             });
 
-            getContentPane().add(panel);
+            getContentPane().add(panel); // Everything is in this panel
 
             // Last things (end)
             this.setVisible(true);
