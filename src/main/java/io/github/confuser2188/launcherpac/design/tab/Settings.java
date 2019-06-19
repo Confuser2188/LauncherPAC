@@ -6,6 +6,7 @@ import io.github.confuser2188.launcherpac.design.component.Rectangle;
 import io.github.confuser2188.launcherpac.design.component.Text;
 import io.github.confuser2188.launcherpac.design.frame.MainMenu;
 import io.github.confuser2188.launcherpac.misc.CustomImage;
+import io.github.confuser2188.launcherpac.settings.SettingsManager;
 import io.github.confuser2188.launcherpac.settings.language.Language;
 
 import java.awt.*;
@@ -34,6 +35,7 @@ public class Settings extends Tab {
             public void click() {
                 MainMenu.tabIndex = 1;
 
+                SettingsManager.setProperty("username", AccountSettings.userNameInput.getText());
                 MainMenu.USERNAME.setString(AccountSettings.userNameInput.getText());
                 Global.bustImage.setImage(CustomImage.getImageFromURL(MainMenu.USERNAME.getString()));
             }
