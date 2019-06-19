@@ -4,7 +4,7 @@ import java.awt.event.MouseEvent;
 
 public interface ISlider {
 
-    void valueChanged(double newValue);
+    void valueChanged(int newValue);
     void mouseDragged(MouseEvent e);
 
 }

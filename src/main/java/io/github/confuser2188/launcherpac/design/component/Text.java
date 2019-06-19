@@ -46,16 +46,20 @@ public class Text extends Component {
         if(this.font != null)
             graphics.setFont(this.font);
         graphics.setColor(this.getColor());
+        
+        String stringToDraw;
+        if(string != null) stringToDraw = this.prefix + this.string.getString() + this.suffix;
+        else stringToDraw = this.prefix + this.getText() + this.suffix;
 
         if(this.centered) {
-            if(string != null) graphics.drawString(this.prefix + this.string.getString() + this.suffix, this.getX() - graphics.getFontMetrics().stringWidth(this.string.getString()) / 2, this.getY());
-            else graphics.drawString(this.prefix + this.getText() + this.suffix, this.getX() - graphics.getFontMetrics().stringWidth(this.getText()) / 2, this.getY());
+            if(string != null) graphics.drawString(stringToDraw, this.getX() - graphics.getFontMetrics().stringWidth(stringToDraw) / 2, this.getY());
+            else graphics.drawString(stringToDraw, this.getX() - graphics.getFontMetrics().stringWidth(stringToDraw) / 2, this.getY());
         }else if(this.mirror){
-            if(string != null) graphics.drawString(this.prefix + this.string.getString() + this.suffix, this.getX() - graphics.getFontMetrics().stringWidth(this.string.getString()), this.getY());
-            else graphics.drawString(this.prefix + this.getText() + this.suffix, this.getX() - graphics.getFontMetrics().stringWidth(this.getText()), this.getY());
+            if(string != null) graphics.drawString(stringToDraw, this.getX() - graphics.getFontMetrics().stringWidth(stringToDraw), this.getY());
+            else graphics.drawString(stringToDraw, this.getX() - graphics.getFontMetrics().stringWidth(stringToDraw), this.getY());
         }else{
-            if(string != null) graphics.drawString(this.prefix + this.string.getString() + this.suffix, this.getX(), this.getY());
-            else graphics.drawString(this.prefix + this.getText() + this.suffix, this.getX(), this.getY());
+            if(string != null) graphics.drawString(stringToDraw, this.getX(), this.getY());
+            else graphics.drawString(stringToDraw, this.getX(), this.getY());
         }
     }
 

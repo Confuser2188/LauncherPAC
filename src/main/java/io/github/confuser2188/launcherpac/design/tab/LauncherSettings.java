@@ -22,14 +22,13 @@ public class LauncherSettings extends Tab {
         add(new Line(350, 165, 700, 165, Color.GRAY));
         add(new Text("RAM", 350, 210, new Font("Arial", Font.PLAIN, 12), Color.WHITE));
 
-        Text ramValueText = new Text(MainMenu.ramValueString, 700, 210, new Font("Arial", Font.PLAIN, 12), Color.WHITE); ramValueText.setTabIndex(2); ramValueText.setMirror(true);
+        Text ramValueText = new Text(MainMenu.ramValueString, 700, 210, new Font("Arial", Font.PLAIN, 12), Color.WHITE); ramValueText.setSuffix("/" + SystemInfo.getMaxRAM() + " GB"); ramValueText.setMirror(true);
         add(ramValueText);
-        add(new Slider(350, 220, 350, 10, (int)(Double.parseDouble(SystemInfo.getMaxRAM().replace(",", ".")) * 10), Color.WHITE) {
+        add(new Slider(350, 220, 350, Integer.parseInt(SettingsManager.getProperties().getProperty("ram")), (int)(Double.parseDouble(SystemInfo.getMaxRAM().replace(",", ".")) * 10), Color.WHITE) {
             @Override
-            public void valueChanged(double newValue) {
-                // TODO: fix this
-                /*MainMenu.ramValueString.setString(newValue / 10 + "/" + SystemInfo.getMaxRAM() + " GB");
-                settingsAPI.setVal("ram", (int)newValue + "");*/
+            public void valueChanged(int newValue) {
+                MainMenu.ramValueString.setString("" + newValue / 10D);
+                SettingsManager.setProperty("ram", "" + newValue);
             }
         });
 

@@ -21,13 +21,13 @@ public class MainMenu extends JFrame {
 
     public static StringObject status = new StringObject("");
     public static StringObject mcVersion = new StringObject(SettingsManager.getProperties().getProperty("mcVersion"));
-    public static StringObject ramValueString = new StringObject("1.0/" + SystemInfo.getMaxRAM() + " GB");
+    public static StringObject ramValueString = new StringObject("1.0");
 
     public static MainMenu menu;
     public static StringObject USERNAME;
     private boolean dragging;
     private Point point;
-    public static int tabIndex = 6;
+    public static int tabIndex = 6; // index of login tab
 
     private ArrayList<Tab> tabs = new ArrayList<>();
 

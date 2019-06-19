@@ -38,6 +38,7 @@ public class SettingsManager {
         defaultProperties.put("language", "en");
         defaultProperties.put("username", "Phoenix");
         defaultProperties.put("mcVersion", "1.13.2");
+        defaultProperties.put("ram", "10");
 
         return defaultProperties;
     }
