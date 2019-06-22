@@ -20,7 +20,7 @@ public class MainMenu extends JFrame {
 
     public static StringObject status = new StringObject("");
     public static StringObject mcVersion = new StringObject(SettingsManager.getProperties().getProperty("mcVersion"));
-    public static StringObject ramValueString = new StringObject(SettingsManager.getProperties().getProperty("ram"));
+    public static StringObject ramValueString = new StringObject(Integer.parseInt(SettingsManager.getProperties().getProperty("ram")) / 10D + "");
 
     public static MainMenu menu;
     public static StringObject USERNAME;
